@@ -40,7 +40,7 @@ class AsyncDatabaseSession:
 
 db = AsyncDatabaseSession()
 
-async def commit_callback():
+async def commit_rollback():
     try:
         await db.commit()
     except Exception:

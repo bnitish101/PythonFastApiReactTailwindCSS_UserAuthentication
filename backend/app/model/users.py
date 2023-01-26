@@ -9,7 +9,8 @@ class Users(SQLModel, TimeMixin, table=True):
     __tablename__ = "tbl_users"
     
     id : Optional[str] = Field(None, primary_key=True, nullable=False)
-    username : str = Field(sa_column=Column("email", String, unique=True))
+    email : str = Field(sa_column=Column("email", String, unique=True))
+    username : str = Field(sa_column=Column("username", String, unique=True))
     password : str
 
     person_id : Optional[str] = Field(default=None, foreign_key="tbl_person.id")
