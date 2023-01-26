@@ -22,6 +22,6 @@ class Person(SQLModel, TimeMixin, table=True):
     phone_number : str
 
     users : Optional["Users"] = Relationship(
-        sa_relationship_kwargs={"userlist": False},
+        # sa_relationship_kwargs={"userlist": False},
         back_populates= "tbl_person"
     )
