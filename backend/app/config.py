@@ -2,6 +2,12 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel
 
+# --------- cb+ s Auth --------- #
+SECRET_KEY = "NIOTHRIES"
+ALGORITHM = "SH256"
+ACCESS_TOKEN_EXPIRE_MINUTE = 30
+# --------- cb+ e Auth --------- #
+
 # pg
 # username: postgres
 # password: admin123$
