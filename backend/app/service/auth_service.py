@@ -33,11 +33,11 @@ class AuthService:
         _user_id = str(uuid4())
 
         # Convert "birth date" type form frontend String to Date
-        birth_date = datetime.strftime(register.birth, "%d-%m-$Y")
+        birth_date = datetime.strptime(register.birth, "%d-%m-%Y")
 
         # Open image profile detault to string base64
-        with open("./medea/profile.png", "rb") as f:
-            image_str = base64.b64decode(f.read())
+        with open("./media/profile.png", "rb") as f:
+            image_str = base64.b64encode(f.read())
         image_str = "data:image/png;base64,"+image_str.decode("utf-8")
 
         # Mapping request data to class entity table
@@ -53,13 +53,13 @@ class AuthService:
             id = _user_id,
             email = register.email,
             username = register.username,
-            password = pwd_context(register.password),
+            password = pwd_context.hash(register.password),
             person_id = _person_id,
         )
 
         # Everyone who registers through our registration page makes the default as a user
-        _role = await RoleRepository.find_by_list_role_name("user")
-        _user_role = await UsersRole(
+        _role = await RoleRepository.find_by_role_name("user")
+        _user_role = UsersRole(
             user_id = _user_id,
             role_id = _role.id
         )
