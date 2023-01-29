@@ -13,7 +13,7 @@ class BaseRepo:
     async def create(cls, **kwargs):
         model = cls.model(**kwargs)
         db.add(model)
-        await commit_rollback
+        await commit_rollback()
         return model
 
         
