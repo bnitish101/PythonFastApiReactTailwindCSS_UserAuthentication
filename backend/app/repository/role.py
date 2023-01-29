@@ -15,14 +15,15 @@ class RoleRepository(BaseRepo):
 
     @staticmethod
     async def find_by_list_role_name(role_name_list:List[str]):
-
+        # cb+ s debug steps print in litte format ways ;-)
         print(">"*10, "cb+ s (find_by_list_role_name)","<"*10,
 
             f"\n[__class__| {__class__}]\n",
             f"\n[{role_name_list}]\n",
 
         ">"*10, "cb+ e (find_by_list_role_name)","<"*10)
-        
+        # cb+ e debug steps print in litte format ways ;-)
+
         query = select(Role).where(Role.role_name.in_(role_name_list))
         return (await db.execute(query)).scalars().all()
 
