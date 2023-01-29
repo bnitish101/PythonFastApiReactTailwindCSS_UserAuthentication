@@ -7,6 +7,15 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 @router.post("/register", response_model= ResponseSchema, response_model_exclude_none=True)
 async def register(request_body: RegisterSchema):
+    # cb+ s debug steps print in litte format ways ;-)
+    print(">"*10, "cb+ s (register)","<"*10,
+
+        f"\n[__class__| {__name__}]\n",
+        f"\n[request_body| {request_body}]\n",
+
+    ">"*10, "cb+ e (register)","<"*10)
+    # cb+ e debug steps print in litte format ways ;-)
+
     await AuthService.register_service(request_body)
     return ResponseSchema(detail="Successfully data saved.")
     
