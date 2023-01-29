@@ -35,7 +35,7 @@ class RegisterSchema(BaseModel):
         return v
 
     # Gender validation
-    @validator
+    @validator("gender")
     def gender_validation(cls, v):
         if hasattr(Gender, v) is False:
             raise HTTPException(status_code=400, detail={"status": "Bad request", "messaeg": "Invalid input gender"})
