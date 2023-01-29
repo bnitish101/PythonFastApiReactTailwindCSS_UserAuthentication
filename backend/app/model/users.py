@@ -14,6 +14,6 @@ class Users(SQLModel, TimeMixin, table=True):
     password : str
 
     person_id : Optional[str] = Field(default=None, foreign_key="tbl_person.id")
-    person : Optional["Person"] = Relationship(back_populates="tbl_users")
+    person_obj : Optional["Person"] = Relationship(back_populates="users_obj")
 
-    roles : Optional["Role"] = Relationship(back_populates="tbl_users", link_model=UsersRole)
+    roles : Optional["Role"] = Relationship(back_populates="users", link_model=UsersRole)
