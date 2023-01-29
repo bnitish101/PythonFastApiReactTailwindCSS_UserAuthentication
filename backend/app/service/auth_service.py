@@ -85,6 +85,15 @@ class AuthService:
         
         # Checking username
         _username = await UsersRepository.find_by_username(login.username)
+        # cb+ s debug steps print in litte format ways ;-)
+        print(">"*10, "cb+ s (login_service)","<"*10,
+
+            f"\n[__class__| {__class__}]\n",
+            f"\n[_username| {_username}]\n",
+
+        ">"*10, "cb+ e (login_service)","<"*10)
+        # cb+ e debug steps print in litte format ways ;-)
+
         if _username is not None:
             if not pwd_context.verify(login.password, _username.password):
                 raise HTTPException(status_code=400, detail="Invalid Password !")
