@@ -16,7 +16,7 @@ export default function Login() {
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
             />
             <input 
-                type="text" name="" id="" placeholder="Password"
+                type="password" name="" id="" placeholder="Password"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
             />
           </div>
