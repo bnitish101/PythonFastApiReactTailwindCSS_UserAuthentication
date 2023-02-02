@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Login() {
+export default function Login(props) {
   return (
     <React.Fragment>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
@@ -28,9 +29,19 @@ export default function Login() {
                 Sign In
             </button>
             <p>
-              You don't have an account?{" "} 
-              <span className="underline cursor-pointer">Register</span> or {" "}
-              <span className="underline cursor-pointer">Forgot password?</span>   
+              You don't have an account?{" "}
+              <Link 
+                to={"/?register"}
+                onClick={() => {props.setPage("register")}}
+              >
+                <span className="underline cursor-pointer">Register</span> or {" "}
+              </Link>
+              <Link
+                to={"/forgot"}
+                onClick={() => {props.setPage("forgot")}}
+              >
+                <span className="underline cursor-pointer">Forgot password?</span>   
+              </Link>
             </p>
           </div>
         </form>
