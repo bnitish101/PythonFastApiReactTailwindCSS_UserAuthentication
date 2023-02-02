@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios, {isCancel, AxiosError} from 'axios'
 
 export default function Login(props) {
 
@@ -29,6 +30,20 @@ export default function Login(props) {
   const onSubmitHandler = async(event) => {
     event.preventDefault()
     console.log(loginForm)
+
+    await axios.post('http://127.0.0.1:8000/auth/login', {
+      username: loginForm.username,
+      password: loginForm.password
+    })
+    // await axios.post('http://127.0.0.1:8000/auth/login', loginForm)
+    
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
   return (
