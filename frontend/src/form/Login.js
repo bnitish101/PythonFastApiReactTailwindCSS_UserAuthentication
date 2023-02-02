@@ -24,7 +24,13 @@ export default function Login(props) {
         break;
     }
   }
-  console.log(loginForm)
+  // console.log(loginForm)
+
+  const onSubmitHandler = async(event) => {
+    event.preventDefault()
+    console.log(loginForm)
+  }
+
   return (
     <React.Fragment>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
@@ -33,7 +39,7 @@ export default function Login(props) {
         <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 -tracking-wide cursor-pointer mx-auto">
             Please login to your account!
         </p>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className="space-y-4">
             <input 
                 type="text" name="" id="" placeholder="Username"
