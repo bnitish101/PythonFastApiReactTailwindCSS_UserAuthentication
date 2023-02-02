@@ -3,8 +3,9 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from 'react-router-dom';
 
-export default function Register() {
+export default function Register(props) {
     const [dobPicker, setDobPicker] = useState(null); 
     const gender_opt = [
         {value: "", label: "Select your gender"},
@@ -90,7 +91,12 @@ export default function Register() {
             </button>
             <p>
               Already have account?{" "} 
-              <span className="underline cursor-pointer">Sign In</span>   
+              <Link
+                to={"/?login"}
+                onClick={() => {props.setPage("login")}}
+              >
+                    <span className="underline cursor-pointer">Sign In</span>   
+              </Link>
             </p>
           </div>
         </form>
