@@ -1,4 +1,5 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.config import db
 from app.service.auth_service import generate_role
 
@@ -24,6 +25,20 @@ def init_app():
         title= "PythonFastApiReactTailwindCSS_UserAuthentication",
         description= "Login Page",
         version= "1"
+    )
+
+    origins = [
+        "http://localhost",
+        "http://localhost:8080",
+        "http://localhost:3000",
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
     )
 
     @app.on_event("startup")
