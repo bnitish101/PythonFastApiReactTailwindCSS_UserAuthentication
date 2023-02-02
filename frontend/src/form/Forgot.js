@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Forgot() {
+export default function Forgot(props) {
   return (
     <React.Fragment>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
@@ -28,8 +29,13 @@ export default function Forgot() {
                 Update Password
             </button>
             <p>
-              Already have an account?{" "} 
-              <span className="underline cursor-pointer">Sign In</span>   
+              Already have an account?{" "}
+              <Link
+                to={"/?login"}
+                onClick={() => {props.setPage("login")}}
+              >
+                <span className="underline cursor-pointer">Sign In</span>
+              </Link>
             </p>
           </div>
         </form>
