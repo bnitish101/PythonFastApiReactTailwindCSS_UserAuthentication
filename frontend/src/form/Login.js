@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Login(props) {
+
+  const[loginForm, setLoginForm] = useState({
+    username: "",
+    password: "",
+  })
+
+  const onChangeForm = (label, event) => {
+    switch (label) {
+      case "username":
+        setLoginForm({
+          ...loginForm, username: event.target.value
+        })
+        break;
+      case "password":
+        setLoginForm({
+          ...loginForm, password: event.target.value
+        })
+        break;
+      default:
+        break;
+    }
+  }
+  console.log(loginForm)
   return (
     <React.Fragment>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
@@ -14,10 +37,16 @@ export default function Login(props) {
           <div className="space-y-4">
             <input 
                 type="text" name="" id="" placeholder="Username"
+                onChange={ (event) => {
+                  onChangeForm("username", event)
+                }}
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
             />
             <input 
                 type="password" name="" id="" placeholder="Password"
+                onChange={ (event) => {
+                  onChangeForm("password", event)
+                } }
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
             />
           </div>
