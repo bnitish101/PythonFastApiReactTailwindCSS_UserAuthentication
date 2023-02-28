@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios, {isCancel, AxiosError} from 'axios'
+import {toast} from "react-toastify"
 
 export default function Login(props) {
 
@@ -45,6 +46,10 @@ export default function Login(props) {
       localStorage.setItem("auth_token", response.data.result.access_token)
       localStorage.setItem("auth_token_type", response.data.result.token_type)
 
+      // add success notify
+      toast.success(response.data.detail)
+
+      // reload after success login
       setTimeout(() => {
         window.location.reload()
       }, 1000);
@@ -52,6 +57,8 @@ export default function Login(props) {
     })
     .catch(function (error) {
       console.log(error);
+      // add error notify
+      toast.error(error.response.data.detail)
     });
 
   }
