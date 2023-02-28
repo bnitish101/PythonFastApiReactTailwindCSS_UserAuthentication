@@ -38,7 +38,17 @@ export default function Login(props) {
     // await axios.post('http://127.0.0.1:8000/auth/login', loginForm)
     
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
+      // console.log(response.data.result.access_token);
+
+      // save access_token and token_type in localStorage
+      localStorage.setItem("auth_token", response.data.result.access_token)
+      localStorage.setItem("auth_token_type", response.data.result.token_type)
+
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+
     })
     .catch(function (error) {
       console.log(error);
