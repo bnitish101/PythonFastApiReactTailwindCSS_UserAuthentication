@@ -6,7 +6,20 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 
 export default function Register(props) {
-    const [dobPicker, setDobPicker] = useState(null); 
+    
+    const [dobPicker, setDobPicker] = useState(null);
+    // Convert date format to String
+    const formatDate = (date) =>{
+        let d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDay(),
+        year = "" + d.getFullYear();
+        
+        if (month.length < 2 ) month = "0" + month;
+        if (day.length < 2 ) day = "0" + day;
+        return [day, month, year].join("-");
+    }
+
     const gender_opt = [
         {value: "", label: "Select your gender"},
         {value: "MALE", label: "Male"},
@@ -45,7 +58,8 @@ export default function Register(props) {
             setFormRegister({...formRegister, password: event.target.name});
             break;
             case"birth":
-            setFormRegister({...formRegister, birth: event.target.name});
+            setDobPicker(event)
+            setFormRegister({...formRegister, birth: formatDate(event)});
             break;
             case"gender":
             setFormRegister({...formRegister, gender: event.target.name});
