@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Home() {
+
+  const [user, setUser] = useState({})
+
+  useState( ()=>{
+    // get token from localStorage
+    const auth_token = localStorage.getItem("auth_token");
+    const auth_token_type = localStorage.getItem("auth_token_type");
+    const token = auth_token + " " + auth_token_type;
+    
+  }, [])
   return (
     <div className="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
       <div className="card w-96 mx-auto bg-white shadow-xl hover:shadow">
