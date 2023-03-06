@@ -21,6 +21,7 @@ export default function Home() {
     })
     .then( (response) => {
       console.log("response: ", response)
+      setUser(response.data.result)
     })
     .catch((error) => {
       console.log("error: ", error)
@@ -33,24 +34,24 @@ export default function Home() {
         <img
           className="w-32 mx-auto rounded-full -mt-20 border-8 border-white"
           alt="profile"
-          src='user.profile'
+          src={user.profile}
         />
-        <div className="text-center mt-2 text-3xl font-medium">[user.name]</div>
+        <div className="text-center mt-2 text-3xl font-medium">{user.name}</div>
         <div className="text-center mt-2 font-light text-sm">
-          @[user.username]
+          @{user.username}
         </div>
-        <div className="text-center font-normal text-lg">[user.email]</div>
+        <div className="text-center font-normal text-lg">{user.email}</div>
         <div className="px-6 text-center mt-2 font-light text-sm">
-          <p>[user.birth]</p>
+          <p>{user.birth}</p>
         </div>
         <hr className="mt-8"></hr>
         <div className="flex p-4">
           <div className="w-1/2 text-center">
-            <span className="font-bold">[user.sex]</span>
+            <span className="font-bold">{user.sex}</span>
           </div>
           <div className="w-0 border border-gra-300"></div>
           <div className="w-1/2 text-center">
-            <span className="font-bold">[user.phone_number]</span>
+            <span className="font-bold">{user.phone_number}</span>
           </div>
         </div>
         <hr className="mt-3"></hr>
