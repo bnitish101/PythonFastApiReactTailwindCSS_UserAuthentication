@@ -4,10 +4,14 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 export default function Register(props) {
     
+    const navigate = useNavigate();
+
     const [dobPicker, setDobPicker] = useState(null);
     // Convert date format to String
     const formatDate = (date) =>{
@@ -77,10 +81,20 @@ export default function Register(props) {
         axios
         .post("http://127.0.0.1:8000/auth/register", formRegister)
         .then((response) =>{
+            // redirect to sign page
+            navigate("/?signin")
             console.log("response: ", response)
+            // add susscess toast notify
+            toast.success(response.data.detail)
+            
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000)
         })
         .catch((error) => {
             console.log("error: ", error)
+            // add error toast notify
+            toast.error(error.response.data.detail)
         })
 
 
