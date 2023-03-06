@@ -1,3 +1,6 @@
+username: nio
+passord: passorwd
+
 1. APIs Test>>
 
 Curl
