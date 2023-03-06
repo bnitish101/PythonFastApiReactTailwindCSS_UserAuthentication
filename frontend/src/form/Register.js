@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
@@ -71,6 +72,18 @@ export default function Register(props) {
     const onSubmitHandler = (event) =>{
         event.preventDefault();
         console.log("formData", formRegister)
+
+        // call POST API for submit register form data
+        axios
+        .post("http://127.0.0.1:8000/auth/register", formRegister)
+        .then((response) =>{
+            console.log("response: ", response)
+        })
+        .catch((error) => {
+            console.log("error: ", error)
+        })
+
+
     }
   return (
     <React.Fragment>
