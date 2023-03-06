@@ -79,6 +79,9 @@ export default function Register(props) {
             <input 
                 type="text" name="" id="" placeholder="Name"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onClick={(event) =>{
+                    onChangeForm("name", event)
+                }}
             />
             <DatePicker 
                 // selected={startDate} onChange={(date) => setStartDate(date)}
@@ -86,10 +89,16 @@ export default function Register(props) {
                 dateFormat="dd-mm-yyyy"
                 placeholderText='Birth Date' 
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) => {
+                    onChangeForm("birth", event)
+                }}
             />
             <select
                 value={formRegister.gender} 
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) =>{
+                    onChangeForm("gender", event)
+                }}
             >
                 {gender_opt.map((data)=>{
                         if(data.value === ""){
@@ -112,18 +121,30 @@ export default function Register(props) {
             <input 
                 type="text" name="" id="" placeholder="Username"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) =>{
+                    onChangeForm("username", event)
+                }}
             />
             <input 
                 type="number" name="" id="" placeholder="Phone Number"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) =>{
+                    onChangeForm("phone_number", event);
+                }}
             />
             <input 
                 type="email" name="" id="" placeholder="Email"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) =>{
+                    onChangeForm("eamil", event);
+                }}
             />
             <input 
                 type="text" name="" id="" placeholder="Password"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+                onChange={(event) =>{
+                    onChangeForm("password", event);
+                }}
             />
           </div>
           <div className="text-center mt-6">
