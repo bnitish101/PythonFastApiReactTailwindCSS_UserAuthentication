@@ -32,7 +32,11 @@ export default function Register(props) {
             setFormRegister({...formRegister, username: event.target.name});
             break;
             case"eamil":
-            setFormRegister({...formRegister, eamil: event.target.value});
+            // email validation
+            const email_validaiton = /\S+@\S+\.\S+/
+            if (email_validaiton.test(event.target.name)) {
+                setFormRegister({...formRegister, eamil: event.target.value});
+            }
             break;
             case"phone_number":
             setFormRegister({...formRegister, phone_number: event.target.name});
