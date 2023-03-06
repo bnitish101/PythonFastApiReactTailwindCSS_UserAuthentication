@@ -28,7 +28,7 @@ export default function Register(props) {
     const [formRegister, setFormRegister] = useState({
         name: "",
         username: "",
-        eamil: "",
+        email: "",
         phone_number: "",
         password: "",
         birth: "",
@@ -36,35 +36,41 @@ export default function Register(props) {
         profile: "",
     })
 
-    const onChangeForm = (label, event) =>{
-        switch(label){
-            case"name":
-            setFormRegister({...formRegister, name: event.target.value});
+    const onChangeForm = (label, event) => {
+        switch (label) {
+          case "name":
+            setFormRegister({ ...formRegister, name: event.target.value });
             break;
-            case"username":
-            setFormRegister({...formRegister, username: event.target.name});
+          case "username":
+            setFormRegister({ ...formRegister, username: event.target.value });
             break;
-            case"eamil":
+          case "email":
             // email validation
-            const email_validaiton = /\S+@\S+\.\S+/
-            if (email_validaiton.test(event.target.name)) {
-                setFormRegister({...formRegister, eamil: event.target.value});
+            const email_validation = /\S+@\S+\.\S+/;
+            if (email_validation.test(event.target.value)) {
+              setFormRegister({ ...formRegister, email: event.target.value });
             }
             break;
-            case"phone_number":
-            setFormRegister({...formRegister, phone_number: event.target.name});
+          case "phone_number":
+            setFormRegister({ ...formRegister, phone_number: event.target.value });
             break;
-            case"password":
-            setFormRegister({...formRegister, password: event.target.name});
+          case "password":
+            setFormRegister({ ...formRegister, password: event.target.value });
             break;
-            case"birth":
-            setDobPicker(event)
-            setFormRegister({...formRegister, birth: formatDate(event)});
+          case "gender":
+            setFormRegister({ ...formRegister, gender: event.target.value });
             break;
-            case"gender":
-            setFormRegister({...formRegister, gender: event.target.name});
+          case "birth":
+            setDobPicker(event);
+            setFormRegister({ ...formRegister, birth: formatDate(event) });
             break;
         }
+      };
+
+    // submit handler
+    const onSubmitHandler = (event) =>{
+        event.preventDefault();
+        console.log("formData", formRegister)
     }
   return (
     <React.Fragment>
@@ -74,12 +80,12 @@ export default function Register(props) {
         <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 -tracking-wide cursor-pointer mx-auto">
             Welcome
         </p>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className="space-y-4">
             <input 
                 type="text" name="" id="" placeholder="Name"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
-                onClick={(event) =>{
+                onChange={(event) =>{
                     onChangeForm("name", event)
                 }}
             />
@@ -94,29 +100,27 @@ export default function Register(props) {
                 }}
             />
             <select
-                value={formRegister.gender} 
-                className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
-                onChange={(event) =>{
-                    onChangeForm("gender", event)
-                }}
+              value={formRegister.gender}
+              className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
+              onChange={(event) => {
+                onChangeForm("gender", event);
+              }}
             >
-                {gender_opt.map((data)=>{
-                        if(data.value === ""){
-                            return(
-                                <option key={data.label} value={data.value} disabled={true}>
-                                    {data.label}
-                                </option>
-                            )
-                        }else{
-                            return(
-                                <option key={data.label} value={data.value} disabled={true}>
-                                    {data.label}
-                                </option>
-                            )
-                        }
-                    }
-                )}
-                <option value=""></option>
+              {gender_opt.map((data) => {
+                if (data.value === "") {
+                  return (
+                    <option key={data.label} value={data.value} disabled>
+                      {data.label}
+                    </option>
+                  );
+                } else {
+                  return (
+                    <option key={data.label} value={data.value}>
+                      {data.label}
+                    </option>
+                  );
+                }
+              })}
             </select>
             <input 
                 type="text" name="" id="" placeholder="Username"
@@ -136,7 +140,7 @@ export default function Register(props) {
                 type="email" name="" id="" placeholder="Email"
                 className="block text-sm py-3 px-4 rounded-lg w-full border outline-none focus:ring focus:outline-none focus:ring-yellow-400"
                 onChange={(event) =>{
-                    onChangeForm("eamil", event);
+                    onChangeForm("email", event);
                 }}
             />
             <input 
