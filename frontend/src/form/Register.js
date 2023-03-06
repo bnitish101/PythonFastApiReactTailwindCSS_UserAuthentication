@@ -22,6 +22,32 @@ export default function Register(props) {
         gender: "",
         profile: "",
     })
+
+    const onChangeForm = (label, event) =>{
+        switch(label){
+            case"name":
+            setFormRegister({...formRegister, name: event.target.value});
+            break;
+            case"username":
+            setFormRegister({...formRegister, username: event.target.name});
+            break;
+            case"eamil":
+            setFormRegister({...formRegister, eamil: event.target.value});
+            break;
+            case"phone_number":
+            setFormRegister({...formRegister, phone_number: event.target.name});
+            break;
+            case"password":
+            setFormRegister({...formRegister, password: event.target.name});
+            break;
+            case"birth":
+            setFormRegister({...formRegister, birth: event.target.name});
+            break;
+            case"gender":
+            setFormRegister({...formRegister, gender: event.target.name});
+            break;
+        }
+    }
   return (
     <React.Fragment>
         <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
