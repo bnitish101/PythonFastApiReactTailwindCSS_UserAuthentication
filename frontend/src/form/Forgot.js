@@ -22,10 +22,22 @@ export default function Forgot(props) {
     }
   }
 
-  const onSubmitHandler = (event) =>{
+  //   submit handler
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log("forgotForm: ", forgotForm)
-  }
+    console.log(forgotForm);
+    await axios
+      .post("http://127.0.0.1:8000/auth/forgot-password", forgotForm)
+      .then((response) => {
+        toast.success(response.data.detail)
+        setTimeout(()=>{
+            window.location.reload()
+        },1000)
+      })
+      .catch((error) => {
+        toast.success(error.response.data.detail)
+      });
+  };
 
   return (
     <React.Fragment>
