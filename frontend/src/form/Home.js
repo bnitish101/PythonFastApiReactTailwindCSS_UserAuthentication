@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function Home() {
@@ -8,8 +9,23 @@ export default function Home() {
     // get token from localStorage
     const auth_token = localStorage.getItem("auth_token");
     const auth_token_type = localStorage.getItem("auth_token_type");
-    const token = auth_token + " " + auth_token_type;
-    
+    // token must have auth_token_type and then auth_token
+    const token =  auth_token_type + " " + auth_token;
+    console.log("my_token", token)
+    // console.log("my_token: ", token)
+
+    // fetch data from get user API
+    axios
+    .get("http://127.0.0.1:8000/users/", {
+      headers: { Authorization: token },
+    })
+    .then( (response) => {
+      console.log("response: ", response)
+    })
+    .catch((error) => {
+      console.log("error: ", error)
+    });
+
   }, [])
   return (
     <div className="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
