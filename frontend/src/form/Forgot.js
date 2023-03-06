@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -22,7 +21,11 @@ export default function Forgot(props) {
         break;
     }
   }
-  
+
+  const onSubmitHandler = (event) =>{
+    event.preventDefault();
+    console.log("forgotForm: ", forgotForm)
+  }
 
   return (
     <React.Fragment>
@@ -32,7 +35,7 @@ export default function Forgot(props) {
         <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 -tracking-wide cursor-pointer mx-auto">
             Please update your password!
         </p>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className="space-y-4">
             <input 
                 type="email" name="" id="" placeholder="Email"
