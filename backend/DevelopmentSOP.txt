@@ -1,0 +1,49 @@
+Features
+- User should be able to register.
+- User should be able to login.
+- User should be able to view profile after login.
+- User can update password
+
+
+Backend Structure
+|---| Backend
+    |---| App
+    |   |--- Controller (Manage of the REST interface to business loigc)
+    |   |--- Repository (Storage of entity/model bean in the system)
+    |   |--- Model (Model/Entity is data structure like table from ERD "Entity Relationship Digram" )
+    |   |--- Service (Business logic implementation)
+    |--- Media
+
+
+Working Steps
+- Create config file from fastapi to database postgresql
+- Crate model ERD
+- Create repository
+- Create service
+- Create controller
+
+
+Dependencies
+-For Fastapi
+    -- Python
+    -- uvicorn
+    -- fastapi
+-For Database Postgresql
+    -- SQLAlchamy
+    -- sqlmodel
+    -- asyncpg
+    -- psycopg
+-For Schema Data Wrapper
+    -- pydantic
+    -- alembic
+-For JWT Token
+    -- passlib[bcrypt]
+    -- python-jose[cryptography]
+
+
+Steps to implement
+- Create home page
+- Get auth token and auth token type
+- fetch data get user API
+- Integration of registration page with backend
+- Create register form state
